@@ -1,0 +1,13 @@
+<div class="text-gray-600 bg-gray-600 bg-opacity-10 p-3 flex justify-evenly">
+    <div class="flex flex-col items-center">
+        {{- if .Site.Params.ICP }}
+        <a href="https://beian.miit.gov.cn">{{ .Site.Params.ICP }}</a>
+        {{- end }}
+        {{- if .Site.Params.beian }}
+        <a href="http://www.beian.gov.cn/portal/registerSystemInfo">
+            <img src="/img/beian-icon.png" alt="公安网备图标" class="h-4 inline-block align-baseline">{{ .Site.Params.beian }}
+        </a>
+        {{- end }}
+        <p>主题 <a href="https://github.com/asjdf/atom-hugo-theme">atom-hugo-theme</a></p>
+    </div>
+</div>

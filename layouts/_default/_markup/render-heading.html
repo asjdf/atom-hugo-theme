@@ -1,0 +1,5 @@
+<h{{ .Level }} id="{{ .Anchor | safeURL }}" class="inline">
+    <a class="anchor" href="#{{ .Anchor | safeURL }}" class="pt-2">#
+        {{ .Text | safeHTML }}
+    </a>
+</h{{ .Level }}>

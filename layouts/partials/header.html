@@ -1,0 +1,37 @@
+<div class="container max-w-4xl mx-auto p-4 flex flex-col space-y-1 sm:space-y-0 sm:flex-row sm:justify-between">
+    <div class="w-fit dark:text-white dark:opacity-80">
+        {{- if .Site.Params.avatar -}}
+        {{- $.Scratch.Add "srcset" (slice (printf "%s 1x" (.Site.Params.avatar|absURL))) }}
+        {{- $directory := replaceRE "^(.*)/[^/]+$" "$1" .Site.Params.avatar }}
+        {{- $basename := replaceRE "^.*/([^./]+).*$" "$1" .Site.Params.avatar }}
+        {{- $extension := replaceRE "^.*/[^.]+\\.([^.]+)$" "$1" .Site.Params.avatar }}
+        {{- range (readDir (printf "static/%s" $directory)) }}
+            {{- if findRE (printf "^%s-\\d+x\\.%s$" $basename $extension) .Name }}
+                {{- $.Scratch.Add "srcset" (slice (replaceRE (printf "^(%s)-(\\d+x)\\.(%s)$" $basename $extension) (printf "%s/$1-$2.$3 $2" ($directory|absURL)) .Name)) }}
+            {{- end }}
+        {{- end }}
+        {{- $srcset := delimit ($.Scratch.Get "srcset") "," }}
+        <a {{ printf "href=%q" ("/" | relLangURL) | safeHTMLAttr }} class="">
+            <img class="rounded-full w-14 drop-shadow-lg" src="/{{ .Site.Params.avatar }}" {{ printf "srcset=%q" $srcset | safeHTMLAttr }}>
+        </a>
+        {{- end }}
+        {{- if .Site.Params.author }}
+        <h2>{{.Site.Params.author}}</h3>
+        {{- end }}
+        {{- if .Site.Params.selfintro }}
+        <p class="text-sm opacity-75">{{.Site.Params.selfintro}}</p>
+        {{- end }}
+    </div>
+    <nav id="nav" class="justify-content-center flex flex-1 space-x-4 sm:justify-end items-end">
+        {{- range .Site.Menus.main }}
+        <a class="hover:drop-shadow dark:text-white dark:opacity-80" href="{{ .URL }}">
+        {{- if .Pre }}
+        {{- $icon := printf "<i data-feather=\"%s\"></i>" .Pre | safeHTML }}
+        {{- $icon }}
+        {{- end }}
+        {{- $text := print .Name | safeHTML }}
+        {{ $text }}
+        </a>
+        {{- end }}
+    </nav>
+</div>

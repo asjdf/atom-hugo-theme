@@ -1,0 +1,13 @@
+{{ define "main" }}
+<h1 class="text-xl mb-3 dark:text-white dark:opacity-70">{{ .Title }}</h1>
+<div class="space-y-1">
+    {{ range .Pages.ByPublishDate.Reverse }}
+    <p>
+        <a class="text-sky-600 opacity-80 hover:opacity-60" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <!-- <a class="summary" href="{{ .RelPermalink }}">
+            <p>{{ .Summary }}</p>
+        </a> -->
+    </p>
+    {{ end }}
+</div>
+{{ end }}
