@@ -1,0 +1,12 @@
+#content ul{
+    list-style-position: inside;
+    list-style-type: disc;
+}
+#content ol{
+    list-style-position: inside;
+    list-style-type: decimal;
+}
+
+#content li > *{
+    display: inline;
+}
