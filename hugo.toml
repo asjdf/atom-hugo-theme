@@ -7,5 +7,14 @@ avatar = "img/avatar.jpg" # path to image in static dir e.g img/avatar.png (do n
 ICP = "闽ICP备2022001901号-1"      # 域名备案
 beian = "闽公网安备 35030302354429号" # 公安网备
 
+[params]
+gitalk                 = true
+# if gitalk is true, the following params should be set. These parameters could be retrieved from github OAuth
+gitalk_clientID        = "GitHub Application Client ID"
+gitalk_clientSecret    = "GitHub Application Client Secret"
+gitalk_repo            = "GitHub repo"
+gitalk_owner           = "GitHub repo owner"
+gitalk_admin           = ['GitHub repo owner and collaborators, only these guys can initialize github issues']
+
 [markup.highlight]
 noclasses = false

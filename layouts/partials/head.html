@@ -3,6 +3,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ $stylesheet := resources.Match "css/*.css" | resources.Concat "bundle.css" | fingerprint }}
     <link href="{{ $stylesheet.Permalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="stylesheet">
+    {{ if .Site.Params.gitalk }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    {{- end }}
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -24,9 +28,12 @@
             }
         }
     </style>
-    {{- $title := print .Title " | " .Site.Title }}
-    {{- if .IsHome }}{{ $title = .Site.Title }}{{ end }}
-    <title>{{ $title }}</title>
-    <title>{{ .Title }}</title>
-    <title>{{ .Site.Title }}</title>
+    <title>
+    {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
+    {{ if eq $url "/" }}
+        {{ .Site.Title }}
+    {{ else }}
+        {{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}
+    {{ end }}
+    </title>
 </head>

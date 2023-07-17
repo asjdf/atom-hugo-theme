@@ -12,6 +12,10 @@
     </div>
 </div>
 
+{{ if .Site.Params.gitalk }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+{{- end }}
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
 {{ $scripts := resources.Match "js/*.js" | resources.Concat "bundle.js" | fingerprint }}
 <script type="text/javascript" src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}" media="screen"></script>

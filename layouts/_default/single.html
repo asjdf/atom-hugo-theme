@@ -3,4 +3,21 @@
 <div class="dark:text-white dark:text-opacity-80">
     {{ .Content }}
 </div>
+{{ if .Site.Params.gitalk }}
+<div id="gitalk-container" class="dark: text-white dark:text-opacity-80"></div>
+<script type="text/javascript">
+    const gitalk = new Gitalk({
+        id: "{{.Title}}",
+        title: "{{.Title}}",
+        clientID: "{{ .Site.Params.gitalk_clientID }}",
+        clientSecret: "{{ .Site.Params.gitalk_clientSecret }}",
+        repo: "{{ .Site.Params.gitalk_repo }}",
+        owner: "{{ .Site.Params.gitalk_owner }}",
+        admin: {{ .Site.Params.gitalk_admin }},
+        // facebook-like distraction free mode
+        distractionFreeMode: true
+    })
+    gitalk.render('gitalk-container')
+</script>
+{{ end }}
 {{ end }}
