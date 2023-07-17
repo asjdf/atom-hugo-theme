@@ -11,3 +11,7 @@
         <p>主题 <a href="https://github.com/asjdf/atom-hugo-theme">atom-hugo-theme</a></p>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+{{ $scripts := resources.Match "js/*.js" | resources.Concat "bundle.js" | fingerprint }}
+<script type="text/javascript" src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}" media="screen"></script>

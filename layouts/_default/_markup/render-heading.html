@@ -1,5 +1,5 @@
-<h{{ .Level }} id="{{ .Anchor | safeURL }}" class="inline">
-    <a class="anchor" href="#{{ .Anchor | safeURL }}" class="pt-2">#
+<h{{ .Level }} id="{{ .Anchor | safeURL }}" class="my-4 font-bold">
+    <a class="anchor" href="#{{ .Anchor | safeURL }}">#
         {{ .Text | safeHTML }}
     </a>
 </h{{ .Level }}>

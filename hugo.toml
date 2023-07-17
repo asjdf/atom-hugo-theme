@@ -6,3 +6,6 @@ avatar = "img/avatar.jpg" # path to image in static dir e.g img/avatar.png (do n
 
 ICP = "闽ICP备2022001901号-1"      # 域名备案
 beian = "闽公网安备 35030302354429号" # 公安网备
+
+[markup.highlight]
+noclasses = false

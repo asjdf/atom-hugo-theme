@@ -1,0 +1,21 @@
+{{ $class := .Attributes.class | default "" }}
+{{ $lang := .Attributes.lang | default .Type }}
+<div class="relative rounded-lg overflow-hidden">
+    <div class="overflow-x-scroll">
+        {{ if transform.CanHighlight $lang }}
+        <div class="{{ $class }}" id="code-block-{{ .Ordinal }}">
+            {{ highlight .Inner $lang }}
+        </div>
+        {{else}}
+        <pre>
+            <code class="{{ $class }}" id="code-block-{{ .Ordinal }}">
+            {{ .Inner }}
+            </code>
+        </pre>
+        {{end}}
+    </div>
+    <button class="copy-code-btn absolute top-0 right-0 py-1 px-2 bg-slate-200 dark:bg-slate-600 rounded-lg text-xs"
+        data-clipboard-target="#code-block-{{ .Ordinal }}">
+        Copy
+    </button>
+</div>
