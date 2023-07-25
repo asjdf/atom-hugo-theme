@@ -13,3 +13,5 @@ min_version = "0.114.1"
 [author]
   name = "Atom"
   homepage = "https://www.homeboyc.cn/"
+
+# googleAnalytics = 'G-MEASUREMENT_ID'
