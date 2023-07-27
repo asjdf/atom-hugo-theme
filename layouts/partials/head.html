@@ -43,12 +43,21 @@
         }
     </style>
     <title>
-    {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
-    {{ if eq $url "/" }}
+    {{- $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
+    {{- if eq $url "/" }}
         {{ .Site.Title }}
-    {{ else }}
+    {{- else }}
         {{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}
-    {{ end }}
+    {{- end }}
     </title>
-    {{ template "_internal/google_analytics_async.html" . }}
+    {{- if .Site.Params.googleAnalytics }}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMYGM7HMV7"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{.Site.Params.googleAnalytics}}');
+    </script>
+    {{- end }}
 </head>
