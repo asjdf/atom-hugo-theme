@@ -1,9 +1,7 @@
 # Theme config.
-
-author = "asjdf"
 selfintro = "一只在杭电摸鱼的小火鸡" # appears in the site header when set to a non-empty string
 avatar = "img/avatar.jpg" # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
-
+hasCJKLanguage = true
 ICP = "闽ICP备2022001901号-1"      # 域名备案
 beian = "闽公网安备 35030302354429号" # 公安网备
 
@@ -15,6 +13,10 @@ gitalk_clientSecret    = "GitHub Application Client Secret"
 gitalk_repo            = "GitHub repo"
 gitalk_owner           = "GitHub repo owner"
 gitalk_admin           = ['GitHub repo owner and collaborators, only these guys can initialize github issues']
+
+[params.author]
+email = 'homeboyc@foxmail.com'
+name = 'Asjdf'
 
 [markup.highlight]
 noclasses = false

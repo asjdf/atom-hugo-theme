@@ -1,12 +1,19 @@
 {{ define "main" }}
-<h1 class="text-3xl mb-2 dark:text-white dark:text-opacity-80">{{ .Title }}</h1>
+<div class="mb-5 dark:text-white dark:text-opacity-80">
+    <h1 class="font-bold">
+        {{ .Title }}
+    </h1>
+    <p class="text-opacity-10">
+        {{ .Date.Format "2006-01-02" }}&nbsp;大约{{ .WordCount }}字&nbsp;预计阅读{{ .ReadingTime  }}分钟
+    </p>
+</div>
 <div class="relative dark:text-white dark:text-opacity-80">
     <div class="top-0 -right-60 absolute h-full hidden xl:block">
         <div class="py-4 pr-4 w-56 sticky top-0 bg-black bg-opacity-10">
             {{ .TableOfContents }}
         </div>
     </div>
-    <div id="content">
+    <div id="content" class="space-y-4">
         {{ .Content }}
     </div>
 </div>
